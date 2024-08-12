@@ -284,3 +284,48 @@ export default BalanceDetail;
 .react-resizable-handle-sw { bottom: 0; left: 0; cursor: sw-resize; }
 .react-resizable-handle-ne { top: 0; right: 0; cursor: ne-resize; }
 .react-resizable-handle-nw { top: 0; left: 0; cursor: nw-resize; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  /* Hide resize handles by default */
+  .react-resizable-handle {
+    opacity: 0; /* Invisible by default */
+    visibility: hidden; /* Remove from layout flow */
+    transition: opacity 0.3s, visibility 0.3s;
+  }
+  
+  /* Show resize handles on hover */
+  .grid-item:hover .react-resizable-handle {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Optionally style resize handles for better visibility */
+  .react-resizable-handle::before {
+    content: "";
+    display: block;
+    width: 10px; /* Adjust as needed */
+    height: 10px; /* Adjust as needed */
+    background: rgba(0, 0, 0, 0.3); /* Adjust as needed */
+    border-radius: 4px; /* Adjust if needed */
+  }
