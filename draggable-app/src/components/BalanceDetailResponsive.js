@@ -5,8 +5,8 @@ import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 import "./BalanceDetail.css";
 import FieldCard from "./FieldCard";
-import OverlayOne from './OverlayOne'
-import OverlayTwo from './OverlayTwo'
+import OverlayOne from "./OverlayOne";
+import OverlayTwo from "./OverlayTwo";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -95,42 +95,53 @@ function create2DArray(rows, cols, value) {
   return Array.from({ length: rows }, () => Array(cols).fill(value));
 }
 
-const BalanceDetailResponsive = () => {
+const widgets = [
+  { title: "Claim Status", subtitle: "In Progress" },
+  { title: "First Name", subtitle: "Divya" },
+  { title: "Last Name", subtitle: "Rajpoot" },
+  { title: "D.O.B", subtitle: "01-01-2000" },
+  { title: "Provider Name", subtitle: "Avizva" },
+];
+
+const BalanceDetailResponsive = ({
+  handleItemClick,
+  isResizing,
+  setIsResizing,
+}) => {
   const [layout, setLayout] = useState([]);
-  const [activeOverlay, setActiveOverlay] = useState(null);
-  const [isResizing, setIsResizing] = useState(false);
   const gridRef = useRef(null);
 
-  const widgets = [
-    { title: "Claim Status", subtitle: "In Progress" },
-    { title: "First Name", subtitle: "Divya" },
-    { title: "Last Name", subtitle: "Rajpoot" },
-    { title: "Provider Name", subtitle: "Avizva" },
-  ];
-
   const handleDrop = (widget) => {
+    console.log(gridRef.current);
     const gridCols = 12; // Total number of columns in the grid
     const itemWidth = ITEM_WIDTH; // Width of the item in columns
     const rowHeight = 2; // Height of the item in rows
-  
-    // Generate a random position for the new item
-    let nextX, nextY;
-    let isOverlapping;
-    do {
-      nextX = Math.floor(Math.random() * (gridCols - itemWidth + 1));
-      nextY = Math.floor(Math.random() * 10); // Assuming a maximum of 10 rows
-  
-      // eslint-disable-next-line no-loop-func
-      isOverlapping = layout.some((item) => {
-        return (
-          item.y === nextY &&
-          item.x < nextX + itemWidth &&
-          item.x + item.w > nextX
-        );
-      });
-    } while (isOverlapping);
-  
-    // Create a new item with the random position
+
+    // Calculate the next available position
+    let nextX = 0;
+    let nextY = 0;
+
+    if (layout.length > 0) {
+      // Sort the layout by y and x to find the last placed item in the current row
+      const sortedLayout = [...layout].sort((a, b) =>
+        a.y === b.y ? a.x - b.x : a.y - b.y
+      );
+      console.log("sortedLayout: ", sortedLayout);
+      const lastItem = sortedLayout[sortedLayout.length - 1];
+
+      // Calculate the next x position
+      nextX = lastItem.x + lastItem.w;
+      nextY = lastItem.y;
+
+      // Check if the next position exceeds the grid width
+      if (nextX + itemWidth > gridCols) {
+        // Move to the next row if the current row is full or if there's not enough space for the new item
+        nextX = 0;
+        nextY += rowHeight;
+      }
+    }
+
+    // Create a new item with the calculated position
     const newItem = {
       i: `${widget.title}_${generateRandomString(10)}`,
       x: nextX,
@@ -141,71 +152,25 @@ const BalanceDetailResponsive = () => {
       maxW: 4,
       resizeHandles: ["e", "w"],
     };
-  
+
     // Update the layout state with the new item
-    setLayout((prevLayout) => [...prevLayout, newItem]);
+    setLayout((prevLayout) => {
+      // Calculate available space in the current row for all elements
+      const newLayout = prevLayout.map((item) => {
+        if (
+          item.y === newItem.y &&
+          item.x >= newItem.x &&
+          item.x < newItem.x + newItem.w
+        ) {
+          // Shift existing items to the right if they overlap with the new item
+          return { ...item, x: item.x + newItem.w };
+        }
+        return item;
+      });
+
+      return [...newLayout, newItem];
+    });
   };
-  
-  // const handleDrop = (widget) => {
-  //   console.log(gridRef.current);
-  //   const gridCols = 12; // Total number of columns in the grid
-  //   const itemWidth = ITEM_WIDTH; // Width of the item in columns
-  //   const rowHeight = 2; // Height of the item in rows
-
-  //   // Calculate the next available position
-  //   let nextX = 0;
-  //   let nextY = 0;
-
-  //   if (layout.length > 0) {
-  //     // Sort the layout by y and x to find the last placed item in the current row
-  //     const sortedLayout = [...layout].sort((a, b) =>
-  //       a.y === b.y ? a.x - b.x : a.y - b.y
-  //     );
-  //     console.log("sortedLayout: ", sortedLayout);
-  //     const lastItem = sortedLayout[sortedLayout.length - 1];
-
-  //     // Calculate the next x position
-  //     nextX = lastItem.x + lastItem.w;
-  //     nextY = lastItem.y;
-
-  //     // Check if the next position exceeds the grid width
-  //     if (nextX + itemWidth > gridCols) {
-  //       // Move to the next row if the current row is full or if there's not enough space for the new item
-  //       nextX = 0;
-  //       nextY += rowHeight;
-  //     }
-  //   }
-
-  //   // Create a new item with the calculated position
-  //   const newItem = {
-  //     i: `${widget.title}_${generateRandomString(10)}`,
-  //     x: nextX,
-  //     y: nextY,
-  //     w: itemWidth,
-  //     h: rowHeight,
-  //     minW: 2,
-  //     maxW: 4,
-  //     resizeHandles: ["e", "w"],
-  //   };
-
-  //   // Update the layout state with the new item
-  //   setLayout((prevLayout) => {
-  //     // Calculate available space in the current row for all elements
-  //     const newLayout = prevLayout.map((item) => {
-  //       if (
-  //         item.y === newItem.y &&
-  //         item.x >= newItem.x &&
-  //         item.x < newItem.x + newItem.w
-  //       ) {
-  //         // Shift existing items to the right if they overlap with the new item
-  //         return { ...item, x: item.x + newItem.w };
-  //       }
-  //       return item;
-  //     });
-
-  //     return [...newLayout, newItem];
-  //   });
-  // };
 
   const handleResizeStart = () => {
     setIsResizing(true);
@@ -292,6 +257,88 @@ const BalanceDetailResponsive = () => {
     });
   };
 
+  return (
+    <div
+      className={"page"}
+      onDrop={(e) => {
+        e.preventDefault();
+        const widget = JSON.parse(e.dataTransfer.getData("widget"));
+        handleDrop(widget);
+      }}
+      onDragOver={(e) => e.preventDefault()}
+      ref={gridRef}
+    >
+      <ResponsiveGridLayout
+        className="layout"
+        isBounded={false}
+        layouts={{ lg: layout }}
+        breakpoints={breakpoints}
+        cols={cols}
+        row={1}
+        rowHeight={30}
+        onResizeStart={handleResizeStart}
+        onResizeStop={handleResizeStop}
+        verticalCompact={true}
+        isResizable={true}
+        isDraggable={true}
+        onDragStart={() => {
+          setIsResizing(true);
+        }}
+        onDragStop={() => {
+          setTimeout(() => {
+            setIsResizing(false);
+          }, 0);
+        }}
+        autoSize={true}
+        measureBeforeMount={false}
+        useCSSTransforms={true}
+        preventCollision={false}
+      >
+        {layout.map((item) => {
+          const widget = widgets.find((w) => item.i.startsWith(w.title));
+          return (
+            <div
+              key={item.i}
+              data-grid={item}
+              className="grid-item"
+              onClick={() => {
+                if (!isResizing) {
+                  handleItemClick(item);
+                }
+              }}
+            >
+              {widget ? (
+                <>
+                  <FieldCard title={widget.title} subtitle={widget.subtitle} />
+                  <div
+                    className="delete-icon"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDelete(item.i);
+                    }}
+                  >
+                    <DeleteIcon />
+                  </div>
+                </>
+              ) : (
+                <div>Unknown Widget</div>
+              )}
+            </div>
+          );
+        })}
+      </ResponsiveGridLayout>
+    </div>
+  );
+};
+
+const Component = () => {
+  const [activeOverlay, setActiveOverlay] = useState(null);
+  const [isResizing, setIsResizing] = useState(false);
+
+  const closeOverlay = () => {
+    setActiveOverlay(null);
+  };
+
   const handleItemClick = (item) => {
     if (!isResizing) {
       if (item.i.startsWith("Claim")) {
@@ -302,73 +349,23 @@ const BalanceDetailResponsive = () => {
     }
   };
 
-  const closeOverlay = () => {
-    setActiveOverlay(null);
-  };
-
   return (
     <div className="App">
       {activeOverlay === "overlayOne" && <OverlayOne onClose={closeOverlay} />}
       {activeOverlay === "overlayTwo" && <OverlayTwo onClose={closeOverlay} />}
-      <div
-        className="page"
-        onDrop={(e) => {
-          e.preventDefault();
-          const widget = JSON.parse(e.dataTransfer.getData("widget"));
-          handleDrop(widget);
-        }}
-        onDragOver={(e) => e.preventDefault()}
-        ref={gridRef}
-      >
-        <ResponsiveGridLayout
-          className="layout"
-          isBounded={false}
-          layouts={{ lg: layout }}
-          breakpoints={breakpoints}
-          cols={cols}
-          row={1}
-          rowHeight={30}
-          verticalCompact={false}
-          onResizeStart={handleResizeStart} 
-          onResizeStop={handleResizeStop}
-          isResizable={true}
-          isDraggable={true}
-          autoSize={true}
-          measureBeforeMount={false}
-          useCSSTransforms={true}
-          preventCollision={false}
-        >
-          {layout.map((item) => {
-            const widget = widgets.find((w) => item.i.startsWith(w.title));
-            return (
-              <div
-                key={item.i}
-                data-grid={item}
-                className="grid-item"
-                onClick={() => handleItemClick(item)}
-              >
-                {widget ? (
-                  <>
-                    <FieldCard
-                      title={widget.title}
-                      subtitle={widget.subtitle}
-                    />
-                    <div
-                      className="delete-icon"
-                      onClick={(e) =>{ 
-                        e.stopPropagation();
-                        handleDelete(item.i)}}
-                    >
-                      <DeleteIcon />
-                    </div>
-                  </>
-                ) : (
-                  <div>Unknown Widget</div>
-                )}
-              </div>
-            );
-          })}
-        </ResponsiveGridLayout>
+      <div className="background">
+        <div>
+          <BalanceDetailResponsive
+            handleItemClick={handleItemClick}
+            isResizing={isResizing}
+            setIsResizing={setIsResizing}
+          />
+          <BalanceDetailResponsive
+            handleItemClick={handleItemClick}
+            isResizing={isResizing}
+            setIsResizing={setIsResizing}
+          />
+        </div>
       </div>
       <div className="widgets">
         {widgets.map((widget) => (
@@ -388,4 +385,4 @@ const BalanceDetailResponsive = () => {
   );
 };
 
-export default BalanceDetailResponsive;
+export default Component;

@@ -9,8 +9,8 @@
   gap: 100px;
   line-height: 26px;
   font-size: 18px;
-  margin: 25px 20px;
-  height: 100vh;
+  margin: 15px 20px;
+  min-height: 100vh;
 }
 .title {
   text-align: center;
