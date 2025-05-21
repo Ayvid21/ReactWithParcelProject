@@ -1,10 +1,10 @@
 /* General styles for widget containers */
-.widgets {
+.ab-widgets {
   width: 100%;
   /* margin-left: 150px; */
 }
 
-.widget {
+.ab-widget {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,7 +19,7 @@
 }
 
 /* Styles for the page container */
-.page {
+.ab-page {
   margin: 10px;
   flex: 1;
   display: flex;
@@ -33,14 +33,14 @@
   justify-content: flex-start;
 }
 
-.layout-container {
+.ab-layout-container {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
 /* Styles for the grid layout container */
-.layout {
+.ab-layout {
   gap: 20px;
   width: 100%;
   display: flex;
@@ -52,7 +52,7 @@
 }
 
 /* Styles for individual grid items */
-.grid-item {
+.ab-grid-item {
   margin: 5px;
   padding: 30px;
   color: #fff;
@@ -67,7 +67,7 @@
 }
 
 /* Hide delete icon by default */
-.delete-icon {
+.ab-delete-icon {
   position: absolute;
   right: 25px;
   top: 50%;
@@ -77,39 +77,39 @@
   transition: opacity 0.3s;
 }
 
-.background {
+.ab-background {
   /* flex: 1; */
   /* gap: 20px; */
+  /* overflow: hidden; */
   display: flex;
   padding: 20px;
   min-width: 59vw;
-  /* overflow: hidden; */
   position: relative;
-  box-sizing: border-box;
   align-items: center;
+  box-sizing: border-box;
+  justify-content: center;
   border: 1px solid #a1a1a1;
   background-color: #a9a9a9;
-  justify-content: center;
 }
 
-.grid-item:hover .delete-icon {
+.ab-grid-item:hover .delete-icon {
   opacity: 1;
 }
 
-.react-resizable-handle {
+.ab-react-resizable-handle {
   opacity: 0;
   cursor: ew-resize;
 }
 
-.handle {
+.ab-handle {
   width: 20px;
   height: 20px;
 }
 
-.handle-e {
+.ab-handle-e {
   right: -10;
 }
 
-.handle-w {
+.ab-handle-w {
   left: -10;
 }

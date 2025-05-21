@@ -3,7 +3,7 @@ import { Responsive, WidthProvider } from "react-grid-layout";
 import { Delete as DeleteIcon } from "@material-ui/icons";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
-import "./BalanceDetail.css";
+import "./DetailBalance.css";
 import FieldCard from "./FieldCard";
 import OverlayOne from "./OverlayOne";
 import OverlayTwo from "./OverlayTwo";
@@ -96,11 +96,29 @@ function create2DArray(rows, cols, value) {
 }
 
 const widgets = [
-  { title: "Claim Status", subtitle: "In Progress" },
-  { title: "First Name", subtitle: "Divya" },
-  { title: "Last Name", subtitle: "Rajpoot" },
-  { title: "D.O.B", subtitle: "01-01-2000" },
-  { title: "Provider Name", subtitle: "Avizva" },
+  { title: "Date Picker", subtitle: "Store date and uses a date picker" },
+  { title: "Date Time Picker", subtitle: "Store date with a time component" },
+  { title: "Labels", subtitle: "Add labels to cases" },
+  { title: "Numeric Field", subtitle: "Stores and validate numeric values" },
+  { title: "Paragraph", subtitle: "Add a rich text editor" },
+  {
+    title: "Radio Buttons",
+    subtitle: "Gives options to choose 1 option from radio button list",
+  },
+  { title: "Attachments", subtitle: "Allows to add a attachment" },
+  {
+    title: "Single Select",
+    subtitle: "Gives options to choose 1 option from a drop down list",
+  },
+  { title: "Multi Select", subtitle: "Choose  multiple values in select list" },
+  {
+    title: "Short Text",
+    subtitle: "A rich text editor which stores small length of text",
+  },
+  {
+    title: "Short Text",
+    subtitle: "A rich text editor which stores small length of text",
+  },
 ];
 
 const BalanceDetailResponsive = ({
@@ -172,15 +190,12 @@ const BalanceDetailResponsive = ({
     });
   };
 
-  const handleResizeStart = () => {
-    setIsResizing(true);
-  };
-
   const handleResizeStop = (_, oldItem, newItem) => {
-    setIsResizing(false);
     const array = create2DArrayFromLayout(layout);
     const col = oldItem.x / ITEM_WIDTH;
     const row = oldItem.y / ITEM_WIDTH;
+
+    if(oldItem.w === newItem.w) return;
 
     let newArray = [];
     const isReducing = oldItem.w > newItem.w;
@@ -257,9 +272,28 @@ const BalanceDetailResponsive = ({
     });
   };
 
+  const handleClick = (item) => () => {
+      handleItemClick(item);
+  };
+
+  // const handleMouseDown = () => {
+  //   timerRef.current = Date.now();
+  // };
+
+  // const handleMouseUp = (item) => () => {
+  //   const diff = Date.now() - timerRef.current;
+  //   console.log(diff);
+  //   if (diff < 200) {
+  //     console.log('Clicking')
+  //     setTimeout(() => {
+  //       handleClick(item)();
+  //     }, 0)
+  //   }
+  // };
+
   return (
     <div
-      className={"page"}
+      className={"page-area"}
       onDrop={(e) => {
         e.preventDefault();
         const widget = JSON.parse(e.dataTransfer.getData("widget"));
@@ -276,18 +310,18 @@ const BalanceDetailResponsive = ({
         cols={cols}
         row={1}
         rowHeight={30}
-        onResizeStart={handleResizeStart}
+        // onResizeStart={handleResizeStart}
         onResizeStop={handleResizeStop}
         verticalCompact={true}
         isResizable={true}
         isDraggable={true}
         onDragStart={() => {
-          setIsResizing(true);
+          // setIsResizing(true);
         }}
         onDragStop={() => {
-          setTimeout(() => {
-            setIsResizing(false);
-          }, 0);
+          // setTimeout(() => {
+          //   setIsResizing(false);
+          // }, 200);
         }}
         autoSize={true}
         measureBeforeMount={false}
@@ -301,11 +335,9 @@ const BalanceDetailResponsive = ({
               key={item.i}
               data-grid={item}
               className="grid-item"
-              onClick={() => {
-                if (!isResizing) {
-                  handleItemClick(item);
-                }
-              }}
+              // onMouseDownCapture={handleMouseDown}
+              // onMouseUpCapture={handleMouseUp(item)}
+              onClick={handleClick(item)}
             >
               {widget ? (
                 <>
@@ -333,37 +365,37 @@ const BalanceDetailResponsive = ({
 
 const Component = () => {
   const [activeOverlay, setActiveOverlay] = useState(null);
-  const [isResizing, setIsResizing] = useState(false);
 
   const closeOverlay = () => {
     setActiveOverlay(null);
   };
 
   const handleItemClick = (item) => {
-    if (!isResizing) {
-      if (item.i.startsWith("Claim")) {
+    console.log('Item Click')
+    // if (!isResizing) {
+      if (item.i.startsWith("S")) {
         setActiveOverlay("overlayOne");
       } else {
         setActiveOverlay("overlayTwo");
       }
-    }
+    // }
   };
 
   return (
     <div className="App">
       {activeOverlay === "overlayOne" && <OverlayOne onClose={closeOverlay} />}
       {activeOverlay === "overlayTwo" && <OverlayTwo onClose={closeOverlay} />}
-      <div className="background">
+      <div className="background-area">
         <div>
           <BalanceDetailResponsive
             handleItemClick={handleItemClick}
-            isResizing={isResizing}
-            setIsResizing={setIsResizing}
+            // isResizing={isResizing}
+            // setIsResizing={setIsResizing}
           />
           <BalanceDetailResponsive
             handleItemClick={handleItemClick}
-            isResizing={isResizing}
-            setIsResizing={setIsResizing}
+            // isResizing={isResizing}
+            // setIsResizing={setIsResizing}
           />
         </div>
       </div>

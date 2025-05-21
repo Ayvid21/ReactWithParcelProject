@@ -1,0 +1,120 @@
+/* General styles for widget containers */
+.widgets {
+    width: 20vw;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 35px 0px;
+  }
+  
+  .widget {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 70px;
+    padding: 0 20px;
+    margin: 10px 0;
+    cursor: pointer;
+    color: #1e1e1e;
+    text-align: center;
+    border-radius: 4px;
+    border: 1px solid #d6d6d6;
+    background-color: #fff; 
+  }
+  
+  .widget:hover {
+    background-color: #ebf6ff;
+    border: 1px solid #91d3ff;
+  }
+
+  .page-area {
+    margin: 10px;
+    flex: 1;
+    padding: 15px;
+    display: flex;
+    min-width: 73vw;
+    flex-wrap: wrap;
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+    box-sizing: border-box;
+    align-items: flex-start;
+    background-color: #ffffff;
+    justify-content: flex-start;
+  }
+
+  .layout {
+    gap: 20px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 40vh;
+    border-radius: 8px;
+    position: relative;
+    padding: 0px 10px 0px 0px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border: 1px solid #12A1A1;
+  }
+  
+  .grid-item {
+    margin: 5px;
+    padding: 12px;
+    color: #333;
+    display: flex;
+    font-size: 14px;
+    border-radius: 4px;
+    align-items: center;
+    box-sizing: border-box;
+    justify-content: space-between;
+    background-color: #ebf6ff;
+    border: 1px solid #91d3ff;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .delete-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .background-area {
+    display: flex;
+    /* padding: 10px; */
+    position: relative;
+    align-items: center;
+    box-sizing: border-box;
+    justify-content: center;
+    background-color: #f3f3f3;
+    border: 1px solid #a1a1a1;
+    /* border: none; */
+  }
+  
+  
+  .grid-item:hover .delete-icon {
+    opacity: 1;
+  }
+  
+  .react-resizable-handle {
+    opacity: 0;
+    cursor: ew-resize;
+  }
+  
+  .handle {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .handle-e {
+    right: -10;
+  }
+  
+  .handle-w {
+    left: -10;
+  }
+  

@@ -1,0 +1,329 @@
+{
+    "status": "success",
+    "component": {
+      "data": {
+        "state": {
+          "activeStep": "",
+          "caseRef": ""
+        }
+      },
+      "elements": {
+        "labels": {},
+        "urls": {
+          "submitData": "",
+          "actionNext": "",
+          "submitNavClick": ""
+        }
+      },
+      "structure": {
+        "process": {
+          "steps": [
+            {
+              "name": "attributes",
+              "title": {
+                "refId": "",
+                "value": "Attributes"
+              },
+              "url": {
+                "refId": "submitNavClick",
+                "params": {},
+                "request": {
+                  "data": {
+                    "step": "attributes"
+                  }
+                }
+              },
+              "config": {
+                "active": true,
+                "completed": false,
+                "disabled": false,
+                "icon": "attributes",
+                "countInProgress": true,
+                "showSubNavigation": true,  
+                "onClick": {
+                  "triggerEvent": true,
+                  "dynamicEvent": false,
+                  "events": [
+                    {
+                      "name": "syncStepTimeline"
+                    }
+                  ]
+                }
+              },
+              "steps": [
+                {
+                  "name": "case",
+                  "url": {
+                    "refId": "submitNavClick",
+                    "params": {},
+                    "request": {
+                      "data": {
+                        "step": "Case"
+                      }
+                    }
+                  },
+                  "title": {
+                    "refId": "",
+                    "value": "Case"
+                  },
+                  "config": {
+                    "active": true,
+                    "completed": false,
+                    "disabled": false,
+                    "icon": "case",
+                    "countInProgress": true,
+                    "onSuccess": {
+                      "triggerEvent": true,
+                      "dynamicEvent": false,
+                      "events": [
+                        {
+                          "name": "case"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "name": "step",
+                  "url": {
+                    "refId": "submitNavClick",
+                    "params": {}
+                  },
+                  "title": {
+                    "refId": "",
+                    "value": "Step"
+                  },
+                  "config": {
+                    "active": false,
+                    "completed": false,
+                    "disabled": true,
+                    "icon": "step",
+                    "countInProgress": true,
+                    "onClick": {
+                      "triggerEvent": true,
+                      "dynamicEvent": false,
+                      "events": [
+                        {
+                          "name": "step"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "name": "task",
+                  "url": {
+                    "refId": "submitNavClick",
+                    "params": {}
+                  },
+                  "title": {
+                    "refId": "",
+                    "value": "Task"
+                  },
+                  "config": {
+                    "active": false,
+                    "completed": false,
+                    "disabled": true,
+                    "icon": "task",
+                    "countInProgress": true,
+                    "onClick": {
+                      "triggerEvent": true,
+                      "dynamicEvent": false,
+                      "events": [
+                        {
+                          "name": "task"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "name": "data",
+              "title": {
+                "refId": "",
+                "value": "Data"
+              },
+              "url": {
+                "refId": "submitNavClick",
+                "params": {},
+                "request": {
+                  "data": {
+                    "step": "data"
+                  }
+                }
+              },
+              "config": {
+                "active": false,
+                "completed": false,
+                "disabled": true,
+                "countInProgress": false,
+                "showSubNavigation": false,
+                "onClick": {
+                  "triggerEvent": true,
+                  "dynamicEvent": false,
+                  "events": [
+                    {
+                      "name": "syncStepTimeline"
+                    }
+                  ]
+                }
+              },
+              "steps": []
+            },
+            {
+              "name": "process",
+              "title": {
+                "refId": "",
+                "value": "Process"
+              },
+              "url": {
+                "refId": "submitNavClick",
+                "params": {},
+                "request": {
+                  "data": {
+                    "step": "process"
+                  }
+                }
+              },
+              "config": {
+                "active": false,
+                "completed": false,
+                "disabled": true,
+                "countInProgress": false,
+                "showSubNavigation": false,
+                "onClick": {
+                  "triggerEvent": true,
+                  "dynamicEvent": false,
+                  "events": [
+                    {
+                      "name": "syncStepTimeline"
+                    }
+                  ]
+                }
+              },
+              "steps": []
+            }
+          ],
+          "processActions": [],
+          "stepActions": [
+            {
+              "name": "cancel",
+              "type": "button",
+              "style": "outline",
+              "title": {
+                "refId": "",
+                "value": "Cancel"
+              },
+              "url": {
+                "refId": "actionCancel",
+                "params": {},
+                "request": {
+                  "data": {
+                    "caseRef": "${caseRef}",
+                    "cancel": true
+                  }
+                }
+              },
+              "config": {
+                "disabled": false,
+                "overlayConfig": {
+                  "header": {
+                    "title": {
+                      "refId": "",
+                      "value": "Cancel"
+                    }
+                  },
+                  "title": {
+                    "refId": "",
+                    "value": "Are you sure you want to cancel?"
+                  },
+                  "actions": [
+                    {
+                      "name": "submit",
+                      "type": "submit",
+                      "title": {
+                        "refId": "",
+                        "value": "Yes"
+                      }
+                    },
+                    {
+                      "name": "cancel",
+                      "type": "cancel",
+                      "style": "outline",
+                      "title": {
+                        "refId": "",
+                        "value": "No"
+                      }
+                    }
+                  ]
+                },
+                "onSuccess": {
+                  "triggerEvent": true,
+                  "dynamicEvent": false,
+                  "events": [
+                    {
+                      "name": "syncStepTimeline"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Next",
+              "type": "button",
+              "style": "solid",
+              "title": {
+                "refId": "",
+                "value": "Next"
+              },
+              "url": {
+                "refId": "submitData",
+                "params": {}
+              },
+              "config": {
+                "postTextIcon": "next",
+                "disabled": false,
+                "onSuccess": {
+                  "url": {
+                    "refId": "actionNext",
+                    "params": {},
+                    "request": {
+                      "data": {
+                        "stepInformation": "firstStep",
+                        "metaData": {}
+                      },
+                      "context": {
+                        "caseId": "1234"
+                      }
+                    }
+                  },
+                  "config": {
+                    "onSuccess": {
+                      "triggerEvent": true,
+                      "dynamicEvent": false,
+                      "events": [
+                        {
+                          "name": "syncStepTimeline",
+                          "request": {
+                            "data": {
+                              "stepInformation": "firstStep",
+                              "metaData": {}
+                            },
+                            "context": {
+                              "caseId": "1234"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }

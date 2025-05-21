@@ -1,4 +1,5 @@
 import React from 'react';
+import "./fieldCard.css";
 
 const FieldCard = ({ title, subtitle }) => {
   return (

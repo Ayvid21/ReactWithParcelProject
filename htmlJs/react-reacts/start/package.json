@@ -1,0 +1,32 @@
+{
+  "name": "start",
+  "version": "1.0.0",
+  "description": "This is learning react by Divya Singh",
+  "scripts": {
+    "test": "jest",
+    "start": "parcel index.html",
+    "build": "parcel build index.html" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Ayvid21/MiniPractiseJSProject.git"
+  },
+  "keywords": [],
+  "author": "Divya Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ayvid21/MiniPractiseJSProject/issues"
+  },
+  "homepage": "https://github.com/Ayvid21/MiniPractiseJSProject#readme",
+  "devDependencies": {
+    "parcel": "^2.15.1"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "browserslist": [
+    "last 2 version"
+  ]
+
+}
