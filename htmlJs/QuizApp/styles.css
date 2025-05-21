@@ -1,0 +1,234 @@
+body {
+    margin: 0;
+    background-color: #47179940;
+    font-family: 'Courier New', Courier, monospace;
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+}
+
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    inset: 0;
+    margin: auto;
+    position: fixed;
+}
+
+.title {
+    font-size: 65px;
+    font-weight: 700;
+    width: max-content;
+    height: 80px;
+    color: #fff;
+    padding: 20px;
+    margin: 32px 0px;
+    border-radius: 5px 50px;
+    background-color: rgb(92, 44, 154);
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.5);
+}
+
+.start-now {
+    width: 220px;
+    height: 60px;
+    font-size: 25px;
+    border: none;
+    color: #fff;
+    border-radius: 8px;
+    background-color: rgb(4, 138, 4);
+    box-shadow: 2px 4px 5px rgba(2, 106, 2, 0.5);
+    margin: 15px 0px 40px;
+}
+
+.start-now:hover {
+    background-color: rgb(6, 189, 6);
+}
+
+.highest-score {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 15px;
+    display: none;
+}
+
+.highest-score.show {
+    display: block;
+}
+
+.home-footer {
+    display: flex;
+    font-size: 12px;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.overlay.show {
+    display: block;
+}
+
+.popup {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 80%;
+    height: 75%;
+    border-radius: 20px;
+    background-color: rgb(205, 182, 245);;
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    padding: 18px;
+    box-shadow: 4px 4px 5px 2px rgba(0, 0, 0, 0.2);
+    transform: scale(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.popup.open-popup {
+    transform: scale(1);
+}
+
+.popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    width: max-content;
+    height: 12px;
+    color: #fff;
+    padding: 12px;
+    border-radius: 4px 20px;
+    background-color: rgb(92, 44, 154);
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.5);
+}
+
+.quiz-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    height: 12px;
+    padding: 8px;
+    font-weight: 600;
+    border-radius: 3px;
+    background-color: rgb(244, 225, 104);
+}
+
+.body-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.question-section {
+    width: 91%;
+    padding: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
+    background-color: #fff;
+}
+
+.timer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.timer>span {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    height: 12px;
+    padding: 8px;
+    font-weight: 600;
+    border-radius: 3px;
+    color: #fff;
+    background-color: rgb(21, 180, 98);
+}
+
+.options-section {
+    width: 94%;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
+    background-color: #fff;
+}
+
+.option {
+    border: 2px solid #ededed;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 12px 0px;
+}
+
+.option:hover {
+    cursor: pointer;
+    border: 2px solid #707070;
+}
+
+.option.correct {
+    border: 2px solid rgb(21, 180, 98);
+    background-color: rgba(36, 189, 56, 0.09);
+}
+
+.option.incorrect {
+    border: 2px solid rgb(255, 0, 38);
+    background-color: rgba(189, 36, 87, 0.09);
+}
+
+.option.incorrect.correct-msg {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 5px;
+    color: rgb(21, 180, 98);
+}
+
+.footer-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 5px;
+    width: 100%;
+}
+
+.next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin: 0px 12px;
+    color: #fff;
+    padding: 10px;
+    width: auto;
+    border-radius: 8px;
+    background-color: rgb(125, 48, 225);
+}
+
+.next:hover {
+    background-color: rgb(92, 44, 154);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+  

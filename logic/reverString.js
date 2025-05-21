@@ -27,6 +27,15 @@ const reversedStr3 = (str) => {
     
 }
 
-console.log(reversedStr("Software Development"));
-console.log(reversedStr("121233"));
-console.log(reversedStr(11323));
+const reverseStr = (str) => {
+    let newStr = '';
+    for(let i=str.length-1; i>=1; i--) {
+        newStr += str[i]; 
+    }
+    return newStr;
+}
+
+// console.log(reversedStr("Software Development"));
+// console.log(reversedStr("121233"));
+// console.log(reversedStr(11323));
+console.log(reverseStr("Software Development"));

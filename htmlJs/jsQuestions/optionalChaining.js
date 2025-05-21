@@ -4,7 +4,7 @@ const user = {
     age: 24,
 }
 
-// console.log(user.address.city); //error
+// console.log(user.address.city); //error 
 
 if(user.address) {
     console.log(user.address.city);

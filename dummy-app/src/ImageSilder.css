@@ -1,0 +1,13 @@
+.slider-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-main img {
+  display: none;
+}
+
+.slider-main img.active {
+  display: block;
+}
