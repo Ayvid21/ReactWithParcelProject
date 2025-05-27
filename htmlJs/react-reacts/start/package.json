@@ -5,28 +5,27 @@
   "scripts": {
     "test": "jest",
     "start": "parcel index.html",
-    "build": "parcel build index.html" 
+    "build": "parcel build index.html"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:Ayvid21/ReactWithParcel.git"
+    "url": "git+ssh://git@github.com:Ayvid21/ReactWithParcelProject.git"
   },
   "keywords": [],
   "author": "Divya Singh",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Ayvid21/MiniPractiseJSProject/issues"
+    "url": "https://github.com/Ayvid21/ReactWithParcelProject/issues"
   },
-  "homepage": "https://github.com/Ayvid21/MiniPractiseJSProject#readme",
+  "homepage": "https://github.com/Ayvid21/ReactWithParcelProject#readme",
   "devDependencies": {
     "parcel": "^2.15.1"
   },
   "dependencies": {
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0"
   },
   "browserslist": [
     "last 2 version"
   ]
-
 }

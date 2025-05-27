@@ -22,3 +22,6 @@
 - Create different build/bundles for Dev and Production
 
 # Read about browserslist.dev web site
+
+
+# Component composition -> when we pass one or more react component in a react component 
