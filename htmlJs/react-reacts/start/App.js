@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import MyLoader from "./loader";
 
 /**
  * Header
@@ -37,6 +38,7 @@ const Header = () => {
         </div>
     );
 };
+
 
 const RestaurantCard = (props) => {
     const {name, rating, location, priceForTwo, openedTill, maxDeliveryTime} = props?.resData;
@@ -292,6 +294,7 @@ const Body = () => {
 const AppLayout = () => {
     return (
         <div className="app">
+            <MyLoader size='small'/>
             <Header />
             <Body />
       // Footer

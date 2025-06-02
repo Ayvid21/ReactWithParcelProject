@@ -1,3 +1,34 @@
+.loader-small {
+    width: 100px;
+    height: 100px;
+}
+
+.loader-medium {
+    width: 200px;
+    height: 200px;
+}
+
+.loader-large {
+    width: 300px;
+    height: 300px;
+}
+
+.loader {
+    border: 8px solid #b6b6b6;
+    border-radius: 50%;
+    animation: loader-animation 0.5s linear infinite;
+    border-color: #f60202 #b6b6b6 #b6b6b6 #b6b6b6;
+}
+
+@keyframes loader-animation {
+    from {
+        rotate: 0deg;
+    }
+    to {
+        rotate: 360deg;
+    }
+}
+
 .header {
     box-sizing: border-box;
     width: 100%;
