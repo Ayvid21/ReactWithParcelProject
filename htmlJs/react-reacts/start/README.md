@@ -25,3 +25,32 @@
 
 
 # Component composition -> when we pass one or more react component in a react component 
+
+# food ordering app
+
+/**
+ * Header
+ *  - Logo
+ *  - Navigation
+ * Body
+ *  - Search
+ *  - RestaurantList
+ *      - RestaurantCards
+ * Footer
+ *  - Copyright
+ *  - Links
+ *  - Address
+ *  - Contact
+ */
+
+ # React Hooks
+ Normal JS utility functions
+- useState() -> to generate super powerful react variable
+- useEffect()
+
+# Reconciliation algo (React fiber)(in react 16)
+Whenever something changes on UI it is called as reconciliation.
+virtual DOM is the representation os the actual DOM 
+
+# Diff algo
+- it finds out the difference between the old Virtual DOM and the new Virtual DOM, it will then actually updates the DOM on every render cycle.
