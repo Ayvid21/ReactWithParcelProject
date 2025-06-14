@@ -1,3 +1,14 @@
+# to run this project if we get any permission issue and it does not start, do-> 
+    1. use node version above 20
+        a. node -v 
+        b. nvm use 20 (if not 20)
+    2. sudo chown -R $(whoami) .(full stop is included)
+    3. rm -rf node_modules
+        rm package-lock.json
+    4. sudo npm cache clean --force
+    5. sudo npm i
+    6. npm start
+
 #learning which is not learnt yet
 # REACT
 
@@ -54,3 +65,15 @@ virtual DOM is the representation os the actual DOM
 
 # Diff algo
 - it finds out the difference between the old Virtual DOM and the new Virtual DOM, it will then actually updates the DOM on every render cycle.
+
+# fetch -> it is a method provided by the JS engine, it return a promise
+
+# Our browsers block us to call an API from one origin to different origin
+
+#CORS
+
+# state ->
+- whenever state variables update, react triggers a reconciliation cycle(re-render the component).
+
+# why is react fast?
+- The new reconciliation algo(react fiber) finds out the difference between the two virtual dom and updates the dom only when required in the portion of the dom.

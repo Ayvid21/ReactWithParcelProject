@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
-// import MyLoader from "../loader";
 
 const AppLayout = () => {
     return (
@@ -14,6 +13,12 @@ const AppLayout = () => {
         </div>
     );
 };
+const rootElement = document.getElementById("root");
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
+// const root = ReactDOM.createRoot(rootElement);
+// root.render(<AppLayout />);
+
+if (rootElement) {
+  const root = ReactDOM.createRoot(rootElement);
+  root.render(<AppLayout />);
+}

@@ -1,4 +1,4 @@
-import './index.css';
+import '../../index.css';
 
 const Size = {
     Small: 'small',
@@ -13,7 +13,7 @@ function MyLoader( props={} ) {
     let className = "loader";
     className += ` loader-${size}`;
 
-    console.log(className)
+    // console.log(className)
     return <div className={className} />
 
 }
