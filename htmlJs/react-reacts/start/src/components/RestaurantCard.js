@@ -1,14 +1,20 @@
-import { CARD_IMG } from "../utils/constants";
+import { CARD_IMG, TEMP_CARD_IMG } from "../utils/constants";
 
-const RestaurantCard = (props) => {
-  const info = props?.resData?.card?.card?.info || props?.resData;
-  // console.log(props?.resData);
+const RestaurantCard = ({ resData }) => {
+  const info = resData?.card?.card?.info || resData;
 
-  const { name, avgRating, areaName, costForTwo, availability, sla } =
-    info || {};
+  const { name, avgRating, areaName, costForTwo, availability, sla, cloudinaryImageId } = info || {};
+  const imageUrl = CARD_IMG + cloudinaryImageId;
+
   return (
     <div className="restaurant-card">
-      <img src={CARD_IMG} alt="restaurant" />
+      <div className='restaurant-image' >
+        {cloudinaryImageId ? (
+          <img src={imageUrl} alt="Restaurant image" className='restaurant-card-image' />
+        ) : (
+          <img src={TEMP_CARD_IMG} alt="Temporary restaurant image" />
+        )}
+      </div>
       <div className="res-data">
         <div className="res-header">
           <div className="res-name">{name}</div>
