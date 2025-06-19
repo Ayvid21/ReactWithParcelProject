@@ -1,3 +1,12 @@
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit; /* optional: to prevent default blue link color */
+}
+
 .loader-small {
     width: 100px;
     height: 100px;
@@ -24,9 +33,16 @@
     from {
         rotate: 0deg;
     }
+
     to {
         rotate: 360deg;
     }
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .header {
@@ -52,7 +68,7 @@
     height: 60px;
 }
 
-.nav-items > ul {
+.nav-items>ul {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -60,7 +76,7 @@
     font-size: 20px;
 }
 
-.nav-items > ul > li {
+.nav-items>ul>li {
     list-style: none;
     padding: 10px 20px;
 }
@@ -162,7 +178,7 @@
 .restaurant-image {
     display: flex;
     width: 100%;
-    height: 310px;
+    height: 250px;
     object-fit: cover;
     border-radius: 10px 10px 0 0;
     box-sizing: border-box;
@@ -207,7 +223,7 @@
 }
 
 .res-star {
-    font-size: 18px;
+    font-size: 16px;
     background-color: #03aa59;
     color: #fff;
     padding: 2px 6px;
@@ -253,11 +269,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 16px;
     color: #ff8a8a;
     font-weight: 800;
     text-align: left;
 }
+
 .res-subdata {
     font-size: 18px;
     width: 100%;
@@ -300,6 +317,7 @@
     gap: 20px;
     padding: 10px 20px;
 }
+
 .navigation-title-preloader {
     height: 43px;
     width: 90px;
@@ -399,4 +417,351 @@
 
 .login-btn:hover {
     background-color: #db4c4c;
+}
+
+.menu {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 60%;
+    gap: 20px;
+}
+
+.errorComponent {
+    height: 94%;
+    width: 98%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 5px solid #f5afaf;
+    border-radius: 20px;
+    padding: 12px 10px;
+    position: absolute;
+    background-color: #ffd2d2;
+    top: 2%;
+}
+
+.errorOops {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.errorMessage {
+    font-size: 35px;
+    font-weight: 700;
+    color: #f75454;
+}
+
+.errorStatus {
+    font-size: 30px;
+    font-weight: 700;
+    color: #8e8e8e;
+}
+
+.errorInfo {
+    font-size: 25px;
+    font-weight: 700;
+    color: #8e8e8e;
+}
+
+.restaurant-name,
+.orderType {
+    font-size: 40px;
+    line-height: 24px;
+    width: 100%;
+}
+
+.orderType {
+    font-size: 20px;
+    line-height: 24px;
+    border-bottom: 1px solid #b0b0b0;
+    width: 100%;
+}
+
+.restaurant-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
+    padding: 20px;
+    width: 96%;
+    margin-bottom: 20px;
+}
+
+.restaurant-status-card {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+}
+
+.restaurant-status-card-rating-price {
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+    padding: 12px 0px;
+}
+
+.restaurant-status-card-rating {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.restaurant-status-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 0;
+}
+
+.restaurant-status-card-info-name {
+    font-size: 16px;
+    color: #f56868;
+}
+
+.restaurant-status-card-info-outlet-item {
+    display: flex;
+
+}
+
+.restaurant-status-card-info-outlet {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.restaurant-status-card-info-outlet>span {
+    font-weight: normal;
+    margin-left: 20px;
+}
+
+.deals-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+}
+
+.deals-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0px;
+
+}
+
+.deals-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.carousel {
+    display: flex;
+    gap: 20px;
+}
+
+.left-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #dbdbdb;
+    width: 45px;
+    border: none;
+    border-radius: 50%;
+    height: 45px;
+    padding: 0
+}
+
+.left-btn:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #b0b0b0;
+}
+
+.right-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #dbdbdb;
+    width: 45px;
+    border: none;
+    border-radius: 50%;
+    height: 45px;
+    padding: 0
+}
+
+.right-btn:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #b0b0b0;
+}
+
+.deals-card-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+.deals-card-container::-webkit-scrollbar {
+    display: none;
+}
+
+.deals-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    border: 1px solid #b4b4b4;
+    border-radius: 16px;
+    width: 100%;
+    min-width: 328px;
+    padding: 16px;
+    gap: 10px;
+    margin-right: 20px;
+}
+
+.deals-card-header {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.deals-coupon-code {
+    font-size: 18px;
+    font-weight: bold;
+    color: #02060c73;
+}
+
+.menu-text {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    font-size: 18px;
+}
+
+.search-dishes {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.recommend-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* gap: 20px; */
+}
+
+.recommend-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.recommend-cards {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.recommend-card {
+    width: 100%;
+    padding: 20px 0px 30px;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+.recommend-card-food-category {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.recommend-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.recommend-info-data {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    gap: 12px;
+}
+
+.recommend-info-data-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgba(2, 6, 12, 0.75);
+}
+
+.recommend-info-data-description {
+    font-size: 16px;
+    color: rgba(2, 6, 12, 0.6);
+}
+
+.recommend-card-price {
+    font-size: 16px;
+}
+
+.recommend-rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.green-star {
+    color: #03aa59;
+    font-size: 16px;
+}
+
+.add-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 20px;
+    background-color: #f56868;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    width: 100px;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    background-color: #db4c4c;
+}
+
+.counter-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.count-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 20px;
+    background-color: #f56868;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    width: 30px;
+    cursor: pointer;
 }

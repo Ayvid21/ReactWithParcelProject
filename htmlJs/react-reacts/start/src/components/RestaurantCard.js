@@ -1,4 +1,5 @@
 import { CARD_IMG, TEMP_CARD_IMG } from "../utils/constants";
+import { convertToTwelveHoursFormat as TimeFormatter } from "../utils/helper";
 
 const RestaurantCard = ({ resData }) => {
   const info = resData?.card?.card?.info || resData;
@@ -27,7 +28,7 @@ const RestaurantCard = ({ resData }) => {
         <div className="res-deliveryInfo">
           <div className="res-openTill">
             {availability?.nextCloseTime
-              ? `${availability.nextCloseTime}`
+              ? `${TimeFormatter(availability.nextCloseTime)}`
               : "Open"}{" "}
           </div>
           <div className="res-subdata">{sla?.deliveryTime} mins</div>

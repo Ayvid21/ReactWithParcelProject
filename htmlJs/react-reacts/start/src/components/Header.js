@@ -1,8 +1,15 @@
 import { APP_LOGO } from '../utils/constants';
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 
 const Header = () => {
-    const [btnName, setBtnName] = useState('Login')
+    const [btnName, setBtnName] = useState('Login');
+    console.log("header rendered")
+
+    useEffect(() => {
+        console.log("useEffect header called!")
+    }, [btnName]);
+
     return (
         <div className="header">
             <div className="logo-container">
@@ -14,12 +21,18 @@ const Header = () => {
             </div>
             <div className="nav-items">
                 <ul>
-                    <li>Home</li>
-                    <li>About Us</li>
-                    <li>Contact Us</li>
-                    <li>Cart</li> 
+                    <li>
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li>
+                        <Link to="/about">About</Link>
+                    </li>
+                    <li>
+                        <Link to="/contact">Contact</Link>
+                    </li>
+                    <li>Cart</li>
                     <button className='login-btn' onClick={() => {
-                        btnName === 'Login'? setBtnName('Logout') : setBtnName('Login')
+                        btnName === 'Login' ? setBtnName('Logout') : setBtnName('Login')
                     }}>{btnName}</button>
                 </ul>
             </div>

@@ -1,6 +1,8 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Preloader from "./Preloader";
+import { HOME_PAGE_LISTING_RESTAURANTS_NEW } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
@@ -12,16 +14,13 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.40980&lng=77.31000&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
+    const data = await fetch(HOME_PAGE_LISTING_RESTAURANTS_NEW);
 
     const json = await data.json();
     const cardData = json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
 
     // Filter out cards that contain a restaurant info object
-    const filteredResList = cardData
-      .map((card) => card?.info)
+    const filteredResList = cardData.map((card) => card?.info)
       .filter(
         (info) =>
           info?.id &&
@@ -46,7 +45,6 @@ const Body = () => {
               setSearchText(e.target.value)
             }} />
           <button className='search-btn' onClick={() => {
-            console.log(searchText)
             const filteredRes = listOfRestaurant.filter((res) => res.name.toLowerCase().includes(searchText.toLowerCase()));
             setFilteredRestaurant(filteredRes);
           }}>Search</button>
@@ -68,10 +66,9 @@ const Body = () => {
       </div>
       <div className="restaurant-container">
         {filteredRestaurant.map((restaurant) => (
-          <RestaurantCard
-            key={restaurant?.id}
-            resData={restaurant}
-          />
+          <Link to={"/restaurant/" + restaurant?.id} key={restaurant?.id}>
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>

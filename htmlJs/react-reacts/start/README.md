@@ -77,3 +77,26 @@ virtual DOM is the representation os the actual DOM
 
 # why is react fast?
 - The new reconciliation algo(react fiber) finds out the difference between the two virtual dom and updates the dom only when required in the portion of the dom.
+
+# useEffect ->
+- If there is no dependency array, the useEffect is called on every render
+
+- If there dependency array is empty = []
+the useEffect is called on initial render only(just once);
+
+- If there is something in the dependency array then useEffect is called every time the item in the array is updated
+eg -> [btnName] -> if the btnName is updated then the useEffect is called.
+
+# useState -> 
+- It is use to create local state variable inside the functional component
+- Never create useState variable outside the functional component.
+- Never create useState variable inside if-else condition / loops / functions it will create inconsistency.
+
+
+# Types of routing in web apps
+- Client side routing -> when no network call goes and all the components are already present from the first time loading of the page.
+
+- Server side routing -> when the whole page is reloaded and we send a network call to fetch some data and then render it on our page.
+
+# Dynamic routing
+Having specific / different routes for all the items that we have eg-> each restaurant will have there own route.
