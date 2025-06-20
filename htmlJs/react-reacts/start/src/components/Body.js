@@ -8,6 +8,21 @@ const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([])
   const [searchText, setSearchText] = useState("");
+  const [hasSearched, setHasSearched] = useState(false);
+
+  const handleSearch = (text) => {
+    const trimmed = text.trim();
+    if (trimmed === "") {
+      setFilteredRestaurant(listOfRestaurant);
+      setHasSearched(false);
+    } else {
+      const filteredRes = listOfRestaurant.filter((res) =>
+        res.name.toLowerCase().includes(searchText.toLowerCase())
+      );
+      setFilteredRestaurant(filteredRes);
+      setHasSearched(true);
+    }
+  }
 
   useEffect(() => {
     fetchData();
@@ -42,11 +57,29 @@ const Body = () => {
             placeholder='Search here'
             value={searchText}
             onChange={(e) => {
-              setSearchText(e.target.value)
-            }} />
+              const text = e.target.value;
+              setSearchText(text);
+
+              // Live filter only if a search was already triggered
+              if (hasSearched) {
+                handleSearch(text);
+              }
+
+              // If search is cleared, reset everything
+              if (text.trim() === "") {
+                setFilteredRestaurant(listOfRestaurant);
+                setHasSearched(false);
+                return;
+              }
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                handleSearch(searchText);
+              }
+            }}
+          />
           <button className='search-btn' onClick={() => {
-            const filteredRes = listOfRestaurant.filter((res) => res.name.toLowerCase().includes(searchText.toLowerCase()));
-            setFilteredRestaurant(filteredRes);
+            handleSearch(searchText);
           }}>Search</button>
         </div>
         <div className="filter">
