@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     const [btnName, setBtnName] = useState('Login');
-    console.log("header rendered")
+    // console.log("header rendered")
 
     useEffect(() => {
-        console.log("useEffect header called!")
+        // console.log("useEffect header called!")
     }, [btnName]);
 
     return (

@@ -100,3 +100,46 @@ eg -> [btnName] -> if the btnName is updated then the useEffect is called.
 
 # Dynamic routing
 Having specific / different routes for all the items that we have eg-> each restaurant will have there own route.
+
+# LifeCycleMethod for class based components ->
+    - constructor,
+    - render,
+    - componentDidMount
+
+# Things we do once the component is mount successfully 
+- it is used to make API calls,
+- in useEffect we do the API calls and firstly we load the component, once the component is loaded with basic details then we make an API call and fill the details
+
+# Why do we make API calls inside componentDidMount
+- In react component when we make an Api call we want to render the component onces then make the API call and then fill the data inside the component. Instead of waiting for the API call to return the data to render the component, otherwise the component will not render and it will keep waiting for the data to come from the API.
+so react quickly render the component then make the api call then render the data.
+
+# What of we have two components what will be the lifecycle method from the parent class based component
+
+Parent constructor
+Parent render
+child1 constructor
+child1 render
+child2 constructor
+child2 render
+child1 component did mount
+child2 component did mount
+Parent component did mount
+
+it follows firstly the render phase then comes the commit phase
+
+1. render phase -> 
+    a. constructor mounting
+    b. render mounting
+
+2. commit phase -> 
+    a. react updates the DOM and refs
+    b. componentDidMount
+
+React batches up the render phase for multiple children then goes to commit phase.
+
+# Why react batches up the render phase for multiple children then goes to commit phase?
+In the commit phase the react starts to update the DOM and the ref and as we know DOM manipulation is the most expensive thing when we are updating the component. We we load a component DOM manipulation is very very expensive and it take a lot of time. That is why react batched the multiple children in the render phase.
+
+# What happens in the render phase?
+it goes for the reconciliation phase. When the react is rendering the components, it triggers the reconciliation and in this it find out the diff between the virtual DOM and then tries to update the DOM.
