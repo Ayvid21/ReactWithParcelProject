@@ -803,3 +803,15 @@ a {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.508);
     margin-bottom: 20px;
 }
+
+.status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.offline {
+    color: #db4c4c;
+    font-size: 24px;
+}

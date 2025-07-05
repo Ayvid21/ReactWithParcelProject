@@ -1,14 +1,24 @@
 import RestaurantCard from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Preloader from "./Preloader";
-import { HOME_PAGE_LISTING_RESTAURANTS_NEW } from "../utils/constants";
 import { Link } from "react-router-dom";
+import useBodyData  from '../utils/useBodyData';
+import useOnlineStatus  from '../utils/useOnlineStatus';
+
 
 const Body = () => {
-  const [listOfRestaurant, setListOfRestaurant] = useState([]);
-  const [filteredRestaurant, setFilteredRestaurant] = useState([])
-  const [searchText, setSearchText] = useState("");
-  const [hasSearched, setHasSearched] = useState(false);
+  const [ searchText, setSearchText ] = useState("");
+  const [ hasSearched, setHasSearched ] = useState(false);
+  const { listOfRestaurant, setListOfRestaurant, filteredRestaurant, setFilteredRestaurant } = useBodyData();
+  const onlineStatus = useOnlineStatus();
+
+  if(onlineStatus === false) {
+    return (
+      <div className="status">
+        <h3 className="offline">Please check your internet connection!</h3>
+      </div>
+    )
+  }
 
   const handleSearch = (text) => {
     const trimmed = text.trim();
@@ -23,31 +33,6 @@ const Body = () => {
       setHasSearched(true);
     }
   }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const data = await fetch(HOME_PAGE_LISTING_RESTAURANTS_NEW);
-
-    const json = await data.json();
-    const cardData = json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-
-    // Filter out cards that contain a restaurant info object
-    const filteredResList = cardData.map((card) => card?.info)
-      .filter(
-        (info) =>
-          info?.id &&
-          info?.name &&
-          info?.cloudinaryImageId &&
-          info?.avgRating &&
-          info?.costForTwo
-      );
-
-    setListOfRestaurant(filteredResList);
-    setFilteredRestaurant(filteredResList);
-  };
 
   return (listOfRestaurant.length === 0) ? <Preloader /> : (
     <div className="body">

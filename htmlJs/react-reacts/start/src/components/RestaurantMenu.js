@@ -1,29 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import RestaurantStatusCard from './RestaurantStatusCard';
 import DealsForYou from "./DealsForYou";
 import FoodCategoryType from "./FoodCategoryType";
 import Recommendation from "./Recommendation";
-import '../../index.css';
 import { useParams } from "react-router-dom";
-import { MENU_API } from "../utils/constants";
+import useRestaurantMenu from '../utils/useRestaurantMenu';
 
 const RestaurantMenu = () => {
-    const [resInfo, setResInfo] = useState(null);
     const { resId } = useParams();
     const [searchText, setSearchText] = useState("");
-
-
-    useEffect(() => {
-        fetchMenu();
-    }, []);
-
-    const fetchMenu = async () => {
-        const data = await fetch(MENU_API + resId);
-        const json = await data.json();
-
-        console.log(json);
-        setResInfo(json?.data);
-    };
+    const resInfo = useRestaurantMenu(resId);
 
     if (resInfo === null) {
         return <h2>Preloader...</h2>;

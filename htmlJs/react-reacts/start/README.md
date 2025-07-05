@@ -55,7 +55,7 @@
  */
 
  # React Hooks
- Normal JS utility functions
+ Normal JS utility functions / helper functions
 - useState() -> to generate super powerful react variable
 - useEffect()
 
@@ -143,3 +143,82 @@ In the commit phase the react starts to update the DOM and the ref and as we kno
 
 # What happens in the render phase?
 it goes for the reconciliation phase. When the react is rendering the components, it triggers the reconciliation and in this it find out the diff between the virtual DOM and then tries to update the DOM.
+
+# How data mounting is done in class based components
+---------------------------Mounting Cycle-------------------------
+
+- Constructor is called (and the state with dummy data is created)
+- Render the the component with the dummy data
+- ComponentDidMount is called
+    - API calls
+    - this.setState -> state variables are updated
+
+-----------------------------Update Cycle-------------------------
+
+- Renders the component with the updated data
+- Html is loaded with new Api data
+- ComponentDidUpdate is called
+
+---------------------------UnMounting Cycle-----------------------
+
+- the component is unmounted if we switch the page.
+
+
+# In useEffect have return statement to unmount the component.
+
+# We cannot make the useEffect function async
+- The function pass to useEffect is expected to return either:
+        - undefined, or
+        - a cleanup function (like () => { ... })
+
+But an async function always returns a Promise. So if you write:
+        useEffect(async () => {
+        await fetchData(); 
+        }, []);
+
+It just made the effect return a Promise, which React’s useEffect does not know what to do with. React throws a warning or weird bugs might happen.
+
+# Is there a way we can use async in useEffect?
+- Use an inner async function inside the effect:
+
+    useEffect(() => {
+        const fetchData = async () => {...}
+
+        fetchData();
+    }
+This way, the outer function is still sync.
+
+# Why do we write super props in constructor props in class based components?
+- When you write a class component like:
+
+    class MyComponent extends React.Component {
+        constructor(props) {
+            super(props);
+            // now you can use this.props inside the constructor
+        }
+    }
+
+- super(props) calls the parent class’s constructor
+    - the parent class is React.Component
+    - React.Component’s constructor does some internal setup with props
+    - If we don’t call super(props), our component doesn’t get the proper this.props inside the constructor. we’ll get undefined if you try to access it.
+
+
+# custom hooks
+- create it separately in utils or amy other folder for helper functions
+- always start the name of the file with the word 'use', as react can than know if the function name starts with 'use' that means it is a hook.
+
+# build some custom hooks and make it available on npm and github.
+
+# chunking / dynamic bundling / code splitting /  lazy loading / on demand loading / dynamic import -> they all are the same thing
+- chunking the application or making the application into smaller chunks or splitting the code or to break down the app into smaller logical chunks.
+- When we use this dynamic import / lazy loading etc all the code does not come at once, it will only come when it is requested.
+
+# after bundling the code it may take some time to come , but if the react load is complete before that then it will throw error 
+"A component suspended while responding to synchronous input"
+
+- to avoid this we use suspense. Just import it from the react and wrap your component with <<Suspense fallback={<h1>loading...</h1>}><Grocery/></Suspense>
+
+- fallback -> till the time your component is getting loaded the fallback will be taking place, so we can pass any jsx to fallback, the jsx for preloader or may be loading as above.
+
+# to check if the code is bundled check the dist folder it will have a new file with that name in it.

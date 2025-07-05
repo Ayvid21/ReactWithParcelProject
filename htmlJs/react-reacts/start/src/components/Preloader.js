@@ -1,4 +1,3 @@
-import '../../index.css';
 import { times } from "lodash";
 
 const Preloader = () => {

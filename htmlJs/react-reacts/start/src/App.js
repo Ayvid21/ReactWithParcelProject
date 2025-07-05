@@ -1,11 +1,16 @@
+import { lazy, Suspense } from 'react';
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
-import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
+import Preloader from './components/Preloader';
+
+// chunking / lazy loading / dynamic bundling / on-demand loading / code splitting
+const Grocery = lazy( () => import("./components/Grocery") );
+const About = lazy( () => import("./components/About") );
 
 const AppLayout = () => {
     return (
@@ -27,11 +32,15 @@ const appRouter = createBrowserRouter([
             },
             {
                 path: "/about",
-                element: <About />,
+                element: <Suspense fallback={<Preloader />}><About /></Suspense>,
             },
             {
                 path: "/contact",
                 element: <Contact />,
+            },
+            {
+                path: "/grocery",
+                element: <Suspense fallback={<Preloader />}><Grocery /></Suspense>,
             },
             {
                 path: "/restaurant/:resId", // /:resId for dynamic resId
