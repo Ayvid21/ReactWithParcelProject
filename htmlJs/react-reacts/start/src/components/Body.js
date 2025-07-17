@@ -1,18 +1,21 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withVegLabel } from "./RestaurantCard";
 import { useState } from "react";
 import Preloader from "./Preloader";
 import { Link } from "react-router-dom";
-import useBodyData  from '../utils/useBodyData';
-import useOnlineStatus  from '../utils/useOnlineStatus';
+import useBodyData from '../utils/useBodyData';
+import useOnlineStatus from '../utils/useOnlineStatus';
 
 
 const Body = () => {
-  const [ searchText, setSearchText ] = useState("");
-  const [ hasSearched, setHasSearched ] = useState(false);
+  const [searchText, setSearchText] = useState("");
+  const [hasSearched, setHasSearched] = useState(false);
   const { listOfRestaurant, setListOfRestaurant, filteredRestaurant, setFilteredRestaurant } = useBodyData();
   const onlineStatus = useOnlineStatus();
+  const RestaurantCardWithVegLabel = withVegLabel( RestaurantCard );
 
-  if(onlineStatus === false) {
+  console.log("body rendered", listOfRestaurant)
+
+  if (onlineStatus === false) {
     return (
       <div className="status">
         <h3 className="offline">Please check your internet connection!</h3>
@@ -85,7 +88,10 @@ const Body = () => {
       <div className="restaurant-container">
         {filteredRestaurant.map((restaurant) => (
           <Link to={"/restaurant/" + restaurant?.id} key={restaurant?.id}>
-            <RestaurantCard resData={restaurant} />
+            {/* if the restaurant is veg add the veg label to it */}
+            {restaurant?.veg ? (
+              <RestaurantCardWithVegLabel resData={restaurant} />) : (
+              <RestaurantCard resData={restaurant} />)}
           </Link>
         ))}
       </div>

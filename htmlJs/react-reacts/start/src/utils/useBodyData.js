@@ -12,7 +12,7 @@ const useBodyData = () => {
     const fetchData = async () => {
         const data = await fetch(HOME_PAGE_LISTING_RESTAURANTS_NEW);
         const json = await data.json();
-        
+        console.log(json)
         const cardData =
         json?.data?.cards?.find(
           (c) => c?.card?.card?.gridElements?.infoWithStyle?.restaurants

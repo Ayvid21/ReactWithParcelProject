@@ -1,9 +1,10 @@
 
-const RestaurantStatusCard = (data) => {
+const RestaurantStatusCard = ( data ) => {
     // console.log("resStatus", data);
 
     const info = data?.data?.card?.card?.info;
-    const {avgRatingString, totalRatings, costForTwoMessage, cuisines, areaName} = info;
+    console.log("RestaurantStatusCard info", info)
+    const { avgRatingString, totalRatings, costForTwoMessage, cuisines, areaName } = info;
   return (
     <div className="restaurant-status">
       <div className="restaurant-status-card">

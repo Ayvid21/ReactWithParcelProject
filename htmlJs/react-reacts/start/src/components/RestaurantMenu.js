@@ -18,7 +18,7 @@ const RestaurantMenu = () => {
     const name = resInfo?.cards?.[0]?.card?.card?.text;
     const tabs = resInfo?.cards?.[1]?.card?.card?.tabs || [];
 
-    console.log("resInfo", resInfo);
+    console.log("RestaurantMenu", resInfo);
 
     return (
         <div className="menu">

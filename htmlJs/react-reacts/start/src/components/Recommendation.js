@@ -7,7 +7,7 @@ const Recommendation = (data) => {
   const [openItem, setOpenItem] = useState(0);
 
   const toggleAccordion = (index) => {
-    if(openItem === index) {
+    if (openItem === index) {
       setOpenItem(null);
     } else {
       setOpenItem(index);
@@ -15,7 +15,7 @@ const Recommendation = (data) => {
   }
 
   if (!allCards || allCards.length === 0) {
-        return;
+    return;
   }
 
   return (
@@ -33,7 +33,7 @@ const Recommendation = (data) => {
               <div className="recommend-title"
                 onClick={() => toggleAccordion(index)}
               >
-                  {sectionTitle} ({itemsList.length})
+                {sectionTitle} ({itemsList.length})
                 <button
                   className="toggle-btn"
                   key={index}>

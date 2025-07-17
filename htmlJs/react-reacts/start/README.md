@@ -222,3 +222,8 @@ This way, the outer function is still sync.
 - fallback -> till the time your component is getting loaded the fallback will be taking place, so we can pass any jsx to fallback, the jsx for preloader or may be loading as above.
 
 # to check if the code is bundled check the dist folder it will have a new file with that name in it.
+
+# High order components
+A normal JS function that takes a component and returns a component.
+
+

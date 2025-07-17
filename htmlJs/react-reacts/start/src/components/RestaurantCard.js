@@ -38,4 +38,19 @@ const RestaurantCard = ({ resData }) => {
   );
 };
 
+// High order component
+// input -> RestaurantCard
+// output -> veg RestaurantCard
+
+export const withVegLabel = ( RestaurantCard ) => {
+  return (props) => {
+    return (
+      <div className="restaurant-card-wrapper" style={{ position: "relative"}}>
+        <label className="label"> 🌱 Veg</label>
+        <RestaurantCard {...props} />
+      </div>
+    )
+  }
+}
+
 export default RestaurantCard;

@@ -1,3 +1,5 @@
+/* @import "tailwindcss"; */
+
 * {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
@@ -158,6 +160,25 @@ a {
     padding: 20px;
     gap: 10px;
     box-sizing: border-box;
+}
+
+.restaurant-card-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.label {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  background-color: #00640ec6;
+  color: #eeff03f6;
+  padding: 6px 15px;
+  border-radius: 4px 0px 0px 4px;
+  font-weight: bold;
+  font-size: 15px;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.321);
 }
 
 .restaurant-card {
@@ -813,5 +834,5 @@ a {
 
 .offline {
     color: #db4c4c;
-    font-size: 24px;
+    font-size: 24px; 
 }
