@@ -1,0 +1,14 @@
+// episode 1 -> 
+// import React from "react";
+// import ReactDOM from 'react-dom/client';
+// const heading = React.createElement("h1", { id: "heading", key: 1 }, "Heading is here!");
+// // React Element => babel transpiles it to object and that it then rendered as HTML element onto the browser.
+// const jsxHeading = <h2 id='heading'>This is my second heading!</h2>
+// // React Component -> 1. Class Based components - old , 2. Functional components - new
+// // React functional component is a function that returns some piece of JSX(react element)
+// const newHeading = () => {
+//     return <h2>React Functional Component</h2>
+// }
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+// root.render(heading)
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////

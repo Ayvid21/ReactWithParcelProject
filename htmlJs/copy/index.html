@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Follow/Unfollow</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .anchor{
+            width: 100px;
+            height: 50px;
+            background: blue;
+            margin: 10px;
+        }
+
+        .positioned {
+            position: absolute;
+            position-anchor: --my-anchor;
+            top: anchor(bottom, 0px);
+            left: anchor(right, 50px);
+            width: 80px;
+            height: 40px;
+            background: red;
+            position-fallback: --fallback-list;
+        }
+        @position-fallback --fallback-list {
+            @try {
+             top: anchor(top);
+             left: anchor(left);
+         }
+         @try {
+             bottom: anchor(top);
+             right: anchor(right);
+         }
+        }
+    </style>
+</head>
+<body>
+    <div class="anchor">Anchor</div>
+    <div class="positioned">Positioned</div>
+</body>
+</html>
